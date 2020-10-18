@@ -33,7 +33,7 @@ pub use self::addr::{
 pub use crate::sys::socket::addr::netlink::NetlinkAddr;
 #[cfg(any(target_os = "android", target_os = "linux"))]
 pub use crate::sys::socket::addr::alg::AlgAddr;
-#[cfg(target_os = "linux")]
+#[cfg(any(target_os = "android", target_os = "linux"))]
 pub use crate::sys::socket::addr::vsock::VsockAddr;
 
 pub use libc::{
@@ -495,10 +495,6 @@ pub enum ControlMessageOwned {
     ///
     /// # Examples
     ///
-    // Disable this test on FreeBSD i386
-    // https://bugs.freebsd.org/bugzilla/show_bug.cgi?id=222039
-    #[cfg_attr(not(all(target_os = "freebsd", target_arch = "x86")), doc = " ```")]
-    #[cfg_attr(all(target_os = "freebsd", target_arch = "x86"), doc = " ```no_run")]
     /// # #[macro_use] extern crate nix;
     /// # use nix::sys::socket::*;
     /// # use nix::sys::uio::IoVec;
@@ -1737,7 +1733,7 @@ pub fn sockaddr_storage_to_addr(
             };
             Ok(SockAddr::Alg(AlgAddr(salg)))
         }
-        #[cfg(target_os = "linux")]
+        #[cfg(any(target_os = "android", target_os = "linux"))]
         libc::AF_VSOCK => {
             use libc::sockaddr_vm;
             let svm = unsafe {

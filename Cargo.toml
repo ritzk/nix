@@ -2,7 +2,7 @@
 name        = "nix"
 description = "Rust friendly bindings to *nix APIs"
 edition     = "2018"
-version     = "0.18.0"
+version     = "0.19.0"
 authors     = ["The nix-rust Project Developers"]
 repository  = "https://github.com/nix-rust/nix"
 license     = "MIT"
@@ -17,9 +17,9 @@ exclude     = [
 ]
 
 [dependencies]
-libc = { version = "0.2.77", features = [ "extra_traits" ] }
+libc = { version = "0.2.78", features = [ "extra_traits" ] }
 bitflags = "1.1"
-cfg-if = "0.1.10"
+cfg-if = "1.0"
 
 [target.'cfg(target_os = "dragonfly")'.build-dependencies]
 cc = "1"

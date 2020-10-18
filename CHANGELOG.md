@@ -5,20 +5,33 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased] - ReleaseDate
 ### Added
+- Added `mremap` (#[1306](https://github.com/nix-rust/nix/pull/1306))
+### Changed
+### Fixed
+### Removed
+
+## [0.19.0] - 6 October 2020
+### Added
 - Added Netlink protocol families to the `SockProtocol` enum
-(#[1289](https://github.com/nix-rust/nix/pull/1289))
+  (#[1289](https://github.com/nix-rust/nix/pull/1289))
 - Added `clock_gettime`, `clock_settime`, `clock_getres`,
   `clock_getcpuclockid` functions and `ClockId` struct.
   (#[1281](https://github.com/nix-rust/nix/pull/1281))
 - Added wrapper functions for `PTRACE_SYSEMU` and `PTRACE_SYSEMU_SINGLESTEP`.
   (#[1300](https://github.com/nix-rust/nix/pull/1300))
+- Add support for Vsock on Android rather than just Linux.
+  (#[1301](https://github.com/nix-rust/nix/pull/1301))
+- Added `TCP_KEEPCNT` and `TCP_KEEPINTVL` TCP keepalive options.
+  (#[1283](https://github.com/nix-rust/nix/pull/1283))
 ### Changed
 - Expose `SeekData` and `SeekHole` on all Linux targets
-(#[1284](https://github.com/nix-rust/nix/pull/1284))
+  (#[1284](https://github.com/nix-rust/nix/pull/1284))
 - Changed unistd::{execv,execve,execvp,execvpe,fexecve,execveat} to take both `&[&CStr]` and `&[CString]` as its list argument(s).
   (#[1278](https://github.com/nix-rust/nix/pull/1278))
 - Made `unistd::fork` an unsafe funtion, bringing it in line with [libstd's decision](https://github.com/rust-lang/rust/pull/58059).
   (#[1293](https://github.com/nix-rust/nix/pull/1293))
+- Support for no-change of parameters of `setresuid` and `setresgid` wrapper
+  ([#1305](https://github.com/nix-rust/nix/pull/1305/))
 ### Fixed
 ### Removed
 
